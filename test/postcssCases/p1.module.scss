@@ -1,0 +1,48 @@
+.flex {
+  display: flex;
+}
+.flex-1 {
+  flex: 1
+}
+.colorRed {
+  color: red;
+}
+.colorGreen {
+  color: green;
+}
+.container {
+  display: flex;
+  padding: 20px;
+  .box {
+    display: flex;
+    align-items: center;
+    .tit {
+      color: red;
+      &::before {
+        content: '¥';
+        font-size: 40px;
+      }
+    }
+  }
+}
+.price {
+  font-size: 40px;
+  color: red;
+  display: flex;
+  align-items: center;
+  &::before {
+    content: '¥';
+    font-size: 40px;
+  }
+}
+.t1 {
+  color: green;
+  display: flex;
+  align-items: center;
+}
+.t1 .t2:not(:empty),
+.t3,
+.t4 {
+  border-top: 6px solid #f8f8f8;
+  box-sizing: border-box;
+}

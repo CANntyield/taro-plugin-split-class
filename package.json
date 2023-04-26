@@ -1,0 +1,36 @@
+{
+  "name": "taro-plugin-split-class",
+  "version": "1.0.0",
+  "description": "a taro plugin to minify css size",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "dev": "tsc -w",
+    "build": "tsc"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "keywords": [
+    "taro",
+    "taro-plugin"
+  ],
+  "author": "cdtan",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@types/node": "^18.14.0",
+    "postcss": "^8.4.23",
+    "sass": "^1.62.1",
+    "vitest": "^0.29.8",
+    "webpack": "^5.80.0"
+  },
+  "dependencies": {
+    "@babel/types": "^7.21.4",
+    "@tarojs/service": "^3.6.5",
+    "@types/babel__core": "^7.20.0",
+    "postcss-selector-parser": "^6.0.11"
+  }
+}

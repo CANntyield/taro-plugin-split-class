@@ -1,0 +1,53 @@
+p {
+  font-size: 1rem;
+}
+
+#header {
+  background-color: #007bff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a[href] {
+  color: #007bff;
+}
+
+a[href="#"] {
+  color: #6c757d;
+}
+
+a:hover {
+  color: #fff;
+  background-color: #007bff;
+}
+
+input:focus {
+  border-color: #007bff;
+}
+
+li:nth-child(odd) {
+  background-color: #f8f9fa;
+}
+
+h1 + p {
+  font-size: 1rem;
+}
+
+h1 ~ p {
+  font-size: 1rem;
+}
+
+.-i > p {
+  font-size: 1rem;
+}
+
+.-i p {
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+._h{max-width:960px}
+
+._i{margin:0 auto}

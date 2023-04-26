@@ -1,0 +1,9 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "webpack5-demo",
+  "appid": "testAppId",
+  "setting": {
+    "es6": false,
+    "minified": false
+  }
+}

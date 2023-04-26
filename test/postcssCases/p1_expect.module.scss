@@ -1,0 +1,37 @@
+@charset "UTF-8";
+.-a .-b {
+  display: flex;
+  align-items: center;
+}
+.-a .-b .-c {
+  color: red;
+}
+.-a .-b .-c::before {
+  content: "¥";
+  font-size: 40px;
+}
+.-d::before {
+  content: "¥";
+  font-size: 40px;
+}
+
+.-e .-f:not(:empty),
+.-g,
+.-h {
+  border-top: 6px solid #f8f8f8;
+  box-sizing: border-box;
+}
+
+._a{display:flex}
+
+._b{flex:1}
+
+._c{color:red}
+
+._d{color:green}
+
+._e{padding:20px}
+
+._f{font-size:40px}
+
+._g{align-items:center}

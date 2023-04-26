@@ -1,0 +1,65 @@
+.box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.tit {
+	font-size: 40px;
+	color: red;
+}
+.red {
+	color: red;
+}
+.box {
+	:global(.extra) {
+		font-size: 60px;
+	}
+}
+:global(.extra).tit {
+	color: blue;
+}
+.green {
+	color: green;
+}
+.price {
+	font-size: 36px;
+	display: flex;
+	align-items: center;
+  &::before {
+		content: '￥';
+		font-size: 40px;
+	}
+}
+.item1{
+	font-size: 32px;
+	color: red;
+}
+.item2{
+	font-size: 32px;
+	color: grey;
+}
+.item3{
+	display: flex;
+	align-items: center;
+	font-size: 32px;
+	color: grey;
+}
+
+:global {
+	.normal {
+		font-size: 36px;
+		color: green;
+		.tit {
+			font-size: 40px;
+			color: red;
+		}
+	}
+	.price {
+		font-size: 32px;
+		color: purple;
+		&::before {
+			content: '￥';
+			font-size: 50px;
+		}
+	}
+}
