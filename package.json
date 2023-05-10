@@ -1,6 +1,6 @@
 {
   "name": "taro-plugin-split-class",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a taro plugin to minify css size",
   "main": "dist/index.js",
   "scripts": {
