@@ -67,4 +67,23 @@ describe("#postcssPlugin",()=>{
     const output = fs.readFileSync(expectFilePath, 'utf8');
     expect(result.css).toBe(output)
   })
+  it("白名单机制",()=>{
+    const inputFile = 'p4.module.scss'
+    const outputFile = 'p4_out.module.scss'
+    const expectFile = 'p4_expect.module.scss'
+
+    const inputFilePath = getPostcssCases(inputFile)
+    const outputFilePath = getPostcssCases(outputFile)
+    const expectFilePath = getPostcssCases(expectFile)
+
+    const input = fs.readFileSync(inputFilePath, 'utf8');
+    const fileOldClassNameMap = {}
+    const result = postcss([HandleCssPostcssPlugin({
+      fileOldClassNameMap,
+      classNameWhite: [/\bt1\b/, 't3', /\biconfont\b/, /^ifont-/],
+    })]).process(compileString(input).css, { from: inputFilePath, to: outputFilePath });
+    fs.writeFileSync(outputFilePath, result.css);
+    const output = fs.readFileSync(expectFilePath, 'utf8');
+    expect(result.css).toBe(output)
+  })
 })

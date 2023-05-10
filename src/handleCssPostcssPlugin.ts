@@ -21,7 +21,7 @@ const transformFunc = (generatePseudoClassName: () => string, classNameMap, noCo
             const selector = nodes[i]
             if (selector.type === 'class') {
               if (white && white.some?.(r => selector.value.match(r))) {
-                return
+
               } else {
                 if (classNameMap[selector.value]) {
                   selector.value = classNameMap[selector.value]
@@ -85,6 +85,9 @@ const plugin = (options?: Options) => {
             if (isCommonClassNameSelector(selector)) {
               const { name: classNameSelector, pseudo } = handlePseudoClassOrElement(selector)
               const className = getClassName(classNameSelector)
+              if (classNameWhite && classNameWhite.some?.(r => className.match(r))) {
+                return
+              }
               let newClassName = ''
               if (pseudo.length === 0) {
                 const firstWordMap = {}
@@ -161,7 +164,6 @@ const plugin = (options?: Options) => {
           }
 
           fileOldClassNameMap[filePath] = cssProperty
-          // console.log(fileOldClassNameMap)
         }
     })
 };

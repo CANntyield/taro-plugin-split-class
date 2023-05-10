@@ -1,0 +1,22 @@
+.t1 {
+  color: green;
+  display: flex;
+  align-items: center;
+}
+.t1 .t2:not(:empty),
+.t3,
+.t4 {
+  border-top: 6px solid #f8f8f8;
+  box-sizing: border-box;
+}
+
+.ifont-arr {
+  color: green;
+}
+.iconfont {
+  font-size: 40px;
+}
+
+.ifont-arr.iconfont {
+  font-size: 32px;
+}
