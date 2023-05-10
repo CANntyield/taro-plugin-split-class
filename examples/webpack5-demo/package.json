@@ -55,7 +55,7 @@
     "postcss-selector-parser": "^6.0.11",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "taro-plugin-split-class": "^1.0.0"
+    "taro-plugin-split-class": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",

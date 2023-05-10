@@ -33,6 +33,7 @@ export default class Index extends Component<PropsWithChildren, IsState> {
         <View className={styles.item1}>item1</View>
         <View className={styles.item2}>item2</View>
         <View className={styles.item3}>item3</View>
+        <View className="iconfont ifont-arr">ifont-arr</View>
         <View className={color === 'red' ? styles.red : styles.green} onClick={this.changeColor.bind(this)}>变化颜色</View>
         <View className='normal'>
           使用非cssModules语法

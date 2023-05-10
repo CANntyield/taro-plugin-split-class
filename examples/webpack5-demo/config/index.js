@@ -15,7 +15,7 @@ const config = {
   plugins: [
     ['taro-plugin-split-class', 
     {
-      classNameWhite: ["zx", "ty", /^zt-/, "iconfont", /^ifont-/]
+      classNameWhite: [ /^sc-/, "iconfont", /^ifont-/]
     }]
   ],
   defineConstants: {
@@ -46,7 +46,7 @@ const config = {
         }
       },
       cssModules: {
-        enable: true, // 默认为 false，如需使用 css modules 功能，则设为 true
+        enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
         config: {
           namingPattern: 'module', // 转换模式，取值为 global/module
           generateScopedName: '[name]__[local]___[hash:base64:5]'
