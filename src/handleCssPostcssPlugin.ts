@@ -1,12 +1,6 @@
 import parser from 'postcss-selector-parser'
-import { PROPERTY_VALUE_CLASS_NAME_PREFIX, PSEUDO_CLASS_NAME_PREFIX, GLOBAL_CLASS_NAME } from './constant'
+import { PROPERTY_VALUE_CLASS_NAME_PREFIX, PSEUDO_CLASS_NAME_PREFIX, GLOBAL_CLASS_NAME, CSS_SHORTHAND_PROPERTIES_MAP, CSS_PROPERTIES_TO_SHORTHAND_MAP } from './constant'
 import { isDev, generateClassName, isCommonClassNameSelector, handlePseudoClassOrElement, getClassName, isCssModulesFile, devSourceClassName } from './utils'
-
-// 生成rule时的最短类名 如 ._a {display:flex}
-const generateOneClassName: () => string = generateClassName(PROPERTY_VALUE_CLASS_NAME_PREFIX)
-
-// 生成用于处理伪类的类名 如 .txt::after   =>   .-a::after
-const generatePseudoClassName: () => string = generateClassName(PSEUDO_CLASS_NAME_PREFIX)
 
 const transformFunc = (generatePseudoClassName: () => string, classNameMap, noCommonClassNameMap, white?: (string | RegExp)[]) => {
   return function transform(selector){
@@ -58,6 +52,12 @@ interface Options {
 }
 
 const plugin = (options?: Options) => {
+    // 生成rule时的最短类名 如 ._a {display:flex}
+    const generateOneClassName: () => string = generateClassName(PROPERTY_VALUE_CLASS_NAME_PREFIX)
+    
+    // 生成用于处理伪类的类名 如 .txt::after   =>   .-a::after
+    const generatePseudoClassName: () => string = generateClassName(PSEUDO_CLASS_NAME_PREFIX)
+
     const propertyClassNameMap = options?.propertyClassNameMap || {} // 全局property对应的className
     const fileOldClassNameMap = options?.fileOldClassNameMap || {} // 全局压缩前className对应的压缩后className
     const classNameWhite = options?.classNameWhite
@@ -90,17 +90,33 @@ const plugin = (options?: Options) => {
               }
               let newClassName = ''
               if (pseudo.length === 0) {
-                const firstWordMap = {}
+                const propertyMap = new Map()
+                const shorthandCssPropertySet = new Set() // 该rule包含了哪些缩写属性
 
                 rule.walkDecls(decl => {
-                  const firstWord = decl.prop.split('-')[0]
-                  firstWordMap[firstWord] = firstWordMap[firstWord] ? firstWordMap[firstWord] + '&' + (decl.prop + '!' + decl.value) : (decl.prop + '!' + decl.value)
+                  if (CSS_SHORTHAND_PROPERTIES_MAP[decl.prop]) {
+                    shorthandCssPropertySet.add(decl.prop)
+                  }
+                })
+
+                rule.walkDecls(decl => {
+                  const shorthandPropertyName = CSS_PROPERTIES_TO_SHORTHAND_MAP[decl.prop] // 该属性是否有对应的缩写属性 
+                  if (shorthandCssPropertySet.has(shorthandPropertyName)) { // rule中是否有过该缩写属性
+                    const shorthandPropertyValue = propertyMap.get(shorthandPropertyName)
+                    if (shorthandPropertyValue) {
+                      propertyMap.set(shorthandPropertyName, shorthandPropertyValue + '&' + decl.prop + '!' + decl.value)
+                    } else {
+                      propertyMap.set(shorthandPropertyName, decl.prop + '!' + decl.value)
+                    }
+                  } else {
+                    propertyMap.set(decl.prop, decl.prop + '!' + decl.value)
+                  }
                   decl.remove()
                 });
 
-                Object.keys(firstWordMap).forEach(property => {
-                  const cssProperty = firstWordMap[property]
-                
+                propertyMap.forEach((value) => {
+                  const cssProperty = value
+
                   if (map[cssProperty]) {
                     newClassName += ' ' + map[cssProperty]
                   } else {

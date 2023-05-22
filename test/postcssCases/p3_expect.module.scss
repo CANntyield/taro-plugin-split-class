@@ -27,16 +27,16 @@ h1 ~ p {
   font-size: 1rem;
 }
 
-.-j > p {
+.-a > p {
   font-size: 1rem;
 }
 
-.-j p {
+.-a p {
   font-size: 1rem;
   margin-top: 1rem;
 }
 
-.-j, #header {
+.-a, #header {
   padding: 1rem;
 }
 
@@ -44,28 +44,28 @@ a[href], button {
   color: #007bff;
 }
 
-.-j > p, .-j p {
+.-a > p, .-a p {
   font-size: 1rem;
   margin-top: 1rem;
 }
 
-.-j > p:first-child, .-j p:first-child {
+.-a > p:first-child, .-a p:first-child {
   font-size: 1.2rem;
 }
 
-.-j > p:last-child, .-j p:last-child {
+.-a > p:last-child, .-a p:last-child {
   font-size: 0.8rem;
 }
 
-.-j > p:nth-child(2n), .-j p:nth-child(2n) {
+.-a > p:nth-child(2n), .-a p:nth-child(2n) {
   font-weight: bold;
 }
 
-.-j > p:nth-child(3n), .-j p:nth-child(3n) {
+.-a > p:nth-child(3n), .-a p:nth-child(3n) {
   color: #007bff;
 }
 
-.-j > p:nth-child(4n), .-j p:nth-child(4n) {
+.-a > p:nth-child(4n), .-a p:nth-child(4n) {
   color: #6c757d;
 }
 
@@ -88,28 +88,30 @@ p {
   margin-top: 0;
   margin-bottom: 1rem;
 }
-.-k:hover {
+.-b:hover {
   color: #fff;
   background-color: #6c757d;
   border-color: #6c757d;
 }
-._j{max-width:960px}
-._k{margin:0 auto}
-._l{padding:2rem}
-._m{display:inline-block}
-._n{padding:0.5rem 1rem}
-._o{font-size:1rem;font-weight:400}
-._p{line-height:1.5}
-._q{text-align:center}
-._r{white-space:nowrap}
-._s{vertical-align:middle}
-._t{cursor:pointer}
-._u{border:1px solid transparent;border-radius:0.25rem}
-._v{transition:color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out}
-._w{background-color:#007bff}
-._x{color:#fff}
-._y{background-color:#6c757d}
-._z{font-size:1.25rem}
-._A{padding:0.75rem 1.5rem}
-._B{display:block}
-._C{width:100%}
+._a{max-width:960px}
+._b{margin:0 auto}
+._c{padding:2rem}
+._d{display:inline-block}
+._e{padding:0.5rem 1rem}
+._f{font-size:1rem}
+._g{font-weight:400}
+._h{line-height:1.5}
+._i{text-align:center}
+._j{white-space:nowrap}
+._k{vertical-align:middle}
+._l{cursor:pointer}
+._m{border:1px solid transparent}
+._n{border-radius:0.25rem}
+._o{transition:color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out}
+._p{background-color:#007bff}
+._q{color:#fff}
+._r{background-color:#6c757d}
+._s{font-size:1.25rem}
+._t{padding:0.75rem 1.5rem}
+._u{display:block}
+._v{width:100%}
